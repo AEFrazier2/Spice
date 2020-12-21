@@ -1,0 +1,5 @@
+﻿Build started...
+1>------ Build started: Project: Spice, Configuration: Debug Any CPU ------
+1>Spice -> C:\Users\aefra\source\repos\Spice\bin\Debug\net5.0\Spice.dll
+1>Spice -> C:\Users\aefra\source\repos\Spice\bin\Debug\net5.0\Spice.Views.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
