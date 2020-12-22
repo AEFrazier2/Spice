@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\aefra\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\aefra\\.nuget\\packages"
+    ]
+  }
+}
