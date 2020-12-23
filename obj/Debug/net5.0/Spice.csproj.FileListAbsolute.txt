@@ -486,3 +486,9 @@ C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Views\Shared\_CreateBut
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\Category\Create.cshtml.g.cs
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Views\Shared\_CreateAndBacktoListButton.cshtml.g.cs
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Views\Shared\_TableButtonPartial.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\Category\Edit.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Views\Shared\_EditAndBackToListButton.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\Category\Delete.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Views\Shared\_DeleteAndBackToListButton.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\Category\Details.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Views\Shared\_DetailsAndBackToListButton.cshtml.g.cs
