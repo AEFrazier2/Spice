@@ -467,7 +467,6 @@ C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Ac
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Manage\TwoFactorAuthentication.cshtml.g.cs
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
-C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Manage\_StatusMessage.cshtml.g.cs
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\RegisterConfirmation.cshtml.g.cs
@@ -492,3 +491,10 @@ C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\Categ
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Views\Shared\_DeleteAndBackToListButton.cshtml.g.cs
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\Category\Details.cshtml.g.cs
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Views\Shared\_DetailsAndBackToListButton.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\SubCategory\Index.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\SubCategory\Create.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Views\Shared\_StatusMessage.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\SubCategory\Edit.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\SubCategory\Details.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\SubCategory\Delete.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Admin\Views\MenuItem\Index.cshtml.g.cs

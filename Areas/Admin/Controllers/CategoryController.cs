@@ -26,6 +26,7 @@ namespace Spice.Areas.Admin.AdminControllers
 
             return View(await _db.Category.ToListAsync());
         }
+        
         //GET - CREATE
         public IActionResult Create()
         {
@@ -64,6 +65,8 @@ namespace Spice.Areas.Admin.AdminControllers
 
         }
 
+        //POST - EDIT
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Category category)
@@ -93,6 +96,8 @@ namespace Spice.Areas.Admin.AdminControllers
             return View(category);
 
         }
+
+        //POST - DELETE
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -124,20 +129,5 @@ namespace Spice.Areas.Admin.AdminControllers
             return View(category);
 
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Details(Category category)
-        {
-            if (ModelState.IsValid)
-            {
-                _db.Update(category);
-                await _db.SaveChangesAsync();
-
-                return RedirectToAction(nameof(Index));
-            }
-            return View(category);
-        }
     }
-
 }
