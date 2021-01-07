@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Spice.Data;
 using Spice.Models;
 using Spice.Models.ViewModels;
+using Spice.Utility;
 
 namespace Spice.Areas.Admin.AdminControllers
 
 {
+    [Authorize(Roles = StaticDetail.ManagerUser)]
     [Area("Admin")]
     public class SubCategoryController : Controller
     {
@@ -38,7 +41,7 @@ namespace Spice.Areas.Admin.AdminControllers
             SubCategoryAndCategoryViewModel model = new SubCategoryAndCategoryViewModel()
             {
                 CategoryList = await _db.Category.ToListAsync(),
-                SubCategory = new Models.SubCategory(),
+                SubCategory = new SubCategory(),
                 SubCategoryList = await _db.SubCategory.OrderBy(p => p.Name).Select(p => p.Name).Distinct().ToListAsync()
             };
 
@@ -52,13 +55,13 @@ namespace Spice.Areas.Admin.AdminControllers
         {
             if (ModelState.IsValid)
             {
-                var doesSubCategoryExist = _db.SubCategory.Include(s=>s.Category).Where(s => s.Name == model.SubCategory.Name && s.Category.Id == model.SubCategory.CategoryId);
+                var doesSubCategoryExists = _db.SubCategory.Include(s=>s.Category).Where(s => s.Name == model.SubCategory.Name && s.Category.Id == model.SubCategory.CategoryId);
 
 
-                if (doesSubCategoryExist.Count() > 0)
+                if (doesSubCategoryExists.Count() > 0)
                 {
                     //Error
-                    StatusMessage = "Error : Sub Category exists under " + doesSubCategoryExist.First().Category.Name + " category. Please use another name.";
+                    StatusMessage = "Error : Sub Category exists under " + doesSubCategoryExists.First().Category.Name + " category. Please use another name.";
                 }
                 else
                 {
@@ -70,7 +73,7 @@ namespace Spice.Areas.Admin.AdminControllers
             SubCategoryAndCategoryViewModel modelVM = new SubCategoryAndCategoryViewModel()
             {
                 CategoryList = await _db.Category.ToListAsync(),
-                SubCategory = model.SubCategory,
+                SubCategory = new SubCategory(),
                 SubCategoryList = await _db.SubCategory.OrderBy(p => p.Name).Select(p => p.Name).ToListAsync(),
                 StatusMessage = StatusMessage
 
@@ -87,7 +90,7 @@ namespace Spice.Areas.Admin.AdminControllers
             subCategories = await (from subCategory in _db.SubCategory
                                    where subCategory.CategoryId == id
                                    select subCategory).ToListAsync();
-
+    
             return Json(new SelectList(subCategories, "Id", "Name"));
         }
 
@@ -166,12 +169,12 @@ namespace Spice.Areas.Admin.AdminControllers
                 return NotFound();
             }
 
-            //SubCategoryAndCategoryViewModel model = new SubCategoryAndCategoryViewModel()
-            //{
-            //    CategoryList = await _db.Category.ToListAsync(),
-            //    SubCategory = subCategory,
-            //    SubCategoryList = await _db.SubCategory.OrderBy(p => p.Name).Select(p => p.Name).Distinct().ToListAsync()
-            //};
+            SubCategoryAndCategoryViewModel model = new SubCategoryAndCategoryViewModel()
+            {
+                CategoryList = await _db.Category.ToListAsync(),
+                SubCategory = subCategory,
+                SubCategoryList = await _db.SubCategory.OrderBy(p => p.Name).Select(p => p.Name).Distinct().ToListAsync()
+            };
 
             return View(subCategory);
         }

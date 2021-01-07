@@ -11,7 +11,7 @@ namespace Spice.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20201224164759_addSubCategoryToDatabase")]
-    partial class addSubCategoryToDatabase
+    partial class AddSubCategoryToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -16,31 +16,31 @@
 <div class="border backgroundWhite row">
     
         <div class="col-8" border-right>
-            <form method="post" asp-action="Create">
-
+            <form asp-action="Create">
+                
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <label asp-for="SubCategory.CategoryId" class="col-form-label"></label>
                     </div>
                     <div class="col-5">
-                        <select id="ddlCategorylist" asp-for="SubCategory.CategoryId" asp-items="Model.CategoryList.ToSelectListItem(Model.SubCategory.CategoryId)" class="form-control"></select> 
+                        <select id="ddlCategorylist" asp-for="SubCategory.CategoryId" asp-items="Model.CategoryList.ToSelectListItem(Model.SubCategory.CategoryId)" class="form-control"></select>
                     </div>
                 </div>
-                
+
                 <div class="form-group row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <label asp-for="SubCategory.Name" class="col-form-label"></label>
                     </div>
-                    <div>
+                    
+                    <div class="col-5">
                         <input asp-for="SubCategory.Name" class="form-control" />
                     </div>
                     <span asp-validation-for="SubCategory.Name" class="text-danger"></span>
-
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-5 offset-2">
+                    <div class="col-5 offset-3">
                         <partial name="_CreateAndBacktoListButton" />
                     </div>
                 </div>
@@ -71,13 +71,13 @@
             $list = $('#SubCategoryList');
 
             $.ajax({
-                url:'/Admin/SubCategory/GetSubCategory/' + categorySelected,
+                url: '/Admin/SubCategory/GetSubCategory/' + categorySelected,
                 type: 'GET',
                 dataType: 'text',
                 success: function (data) {
                     results = JSON.parse(data);
                     $list.html('');
-                    $list.append('<ul class="list-group">')
+                    $list.append(' <ul class="list-group"> ')
                     for (i in results) {
                         $list.append('<li class="list-group-item">' + results[i].text + '</li>');
                     }
@@ -89,11 +89,14 @@
 
         $(document).ready(function () {
             updateSubCategoryList();
+        });
 
-        $("ddlCategoryList").on("change", function () {
+        $("#ddlCategoryList").on("change", function () {
            updateSubCategoryList();
         });
 </script>
+
+
 }
 
 

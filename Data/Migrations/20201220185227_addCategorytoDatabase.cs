@@ -2,7 +2,7 @@
 
 namespace Spice.Data.Migrations
 {
-    public partial class addCategorytoDatabase : Migration
+    public partial class AddCategoryToDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
