@@ -70,6 +70,7 @@ namespace Spice.Areas.Admin.Controllers
 
             string webRootPath = _hostingEnvironment.WebRootPath;
             var files = HttpContext.Request.Form.Files;
+            var supportedTypes = new[] { "png" };
 
             var menuItemFromDb = await _db.MenuItem.FindAsync(MenuItemVM.MenuItem.Id);
 

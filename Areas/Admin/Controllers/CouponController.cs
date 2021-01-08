@@ -4,10 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Spice.Data;
 using Spice.Models;
+using Spice.Models.ViewModels;
 using Spice.Utility;
 
 namespace Spice.Areas.Admin.Controllers
@@ -17,12 +19,23 @@ namespace Spice.Areas.Admin.Controllers
     public class CouponController : Controller
     {
         private readonly ApplicationDbContext _db;
+        
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public CouponController(ApplicationDbContext db)
+        public CouponController(ApplicationDbContext db, IWebHostEnvironment hostingEnvironment, IndexViewModel indexVM)
         {
             _db = db;
+            _hostingEnvironment = hostingEnvironment;
+            IndexVM = indexVM;
         }
-        public async Task<IActionResult> Index()
+
+        //GET INDEX 
+
+
+        readonly IndexViewModel IndexVM = new IndexViewModel();
+
+         public async Task<IActionResult> Index()
+
         {
             return View(await _db.Coupon.ToListAsync());
         }
@@ -38,10 +51,9 @@ namespace Spice.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Coupon coupons)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var files = HttpContext.Request.Form.Files;
-                var supportedTypes = new[] { "png" };
                 if (files.Count>0)
                 {
                     byte[] p1 = null;
