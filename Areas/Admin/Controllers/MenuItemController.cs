@@ -33,9 +33,11 @@ namespace Spice.Areas.Admin.Controllers
             {
                 Category = _db.Category,
                 SubCategory = _db.SubCategory,
-                MenuItem = new Models.MenuItem()
+                MenuItem = new MenuItem()
             };
         }
+        //GET INDEX
+        
         public async Task<IActionResult> Index()
         {
             var menuItems = await _db.MenuItem.Include(m => m.Category).Include(m => m.SubCategory).ToListAsync();
@@ -51,8 +53,10 @@ namespace Spice.Areas.Admin.Controllers
         [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePOST()
+
         {
-            MenuItemVM.MenuItem.SubCategoryId = Convert.ToInt32(Request.Form["SubCategoryId"].ToString());
+                       
+            MenuItemVM.MenuItem.SubCategoryId = Convert.ToInt32(Request.Form["MenuItem.SubCategoryId"].ToString());
 
             if (!ModelState.IsValid)
             {
@@ -98,14 +102,14 @@ namespace Spice.Areas.Admin.Controllers
 
         
         //GET EDIT
-        private async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            MenuItemVM.MenuItem = await _db.MenuItem.Include(m => m.Category).Include(m => m.SubCategoryId).SingleOrDefaultAsync(m => m.Id == id);
+            MenuItemVM.MenuItem = await _db.MenuItem.Include(m => m.Category).Include(m => m.SubCategory).SingleOrDefaultAsync(m => m.Id == id);
             MenuItemVM.SubCategory = await _db.SubCategory.Where(s => s.CategoryId == MenuItemVM.MenuItem.CategoryId).ToListAsync();
 
             if (MenuItemVM.MenuItem == null)
@@ -117,7 +121,7 @@ namespace Spice.Areas.Admin.Controllers
         }
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        private async Task<IActionResult> EditPOST(int? id)
+        public async Task<IActionResult> EditPOST(int? id)
         {
             if (id == null)
             {

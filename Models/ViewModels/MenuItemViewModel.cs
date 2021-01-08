@@ -9,6 +9,8 @@ namespace Spice.Models.ViewModels
     {
         public MenuItem MenuItem { get; set; }
         public IEnumerable<Category> Category { get; set; }
+       
         public IEnumerable<SubCategory> SubCategory { get; set; }
+
     }
 }

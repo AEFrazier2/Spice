@@ -102,15 +102,16 @@ namespace Spice
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "areas",
+                    name: "default",
                     pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
             //app.UseMvc(routes =>
             //{
             //    routes.MapRoute(
             //        name: "areas",
-            //        template: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
+            //        template: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
             //});
         }
     }
