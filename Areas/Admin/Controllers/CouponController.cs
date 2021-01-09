@@ -14,34 +14,30 @@ using Spice.Utility;
 
 namespace Spice.Areas.Admin.Controllers
 {
-    [Authorize(Roles = StaticDetail.ManagerUser)]
+
     [Area("Admin")]
+    [Authorize(Roles = StaticDetail.ManagerUser)]
+    
     public class CouponController : Controller
     {
         private readonly ApplicationDbContext _db;
-        
-        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public CouponController(ApplicationDbContext db, IWebHostEnvironment hostingEnvironment, IndexViewModel indexVM)
+
+        public CouponController(ApplicationDbContext db)
         {
             _db = db;
-            _hostingEnvironment = hostingEnvironment;
-            IndexVM = indexVM;
         }
 
         //GET INDEX 
 
-
-        readonly IndexViewModel IndexVM = new IndexViewModel();
-
-         public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
 
         {
             return View(await _db.Coupon.ToListAsync());
         }
 
         //GET - CREATE Coupon
-        public  IActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -54,12 +50,12 @@ namespace Spice.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var files = HttpContext.Request.Form.Files;
-                if (files.Count>0)
+                if (files.Count > 0)
                 {
                     byte[] p1 = null;
                     using (var fs1 = files[0].OpenReadStream())
                     {
-                        using ( var ms1 = new MemoryStream())
+                        using (var ms1 = new MemoryStream())
                         {
                             fs1.CopyTo(ms1);
                             p1 = ms1.ToArray();
@@ -77,6 +73,7 @@ namespace Spice.Areas.Admin.Controllers
         }
 
         //GET - EDIT Coupon
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -100,7 +97,7 @@ namespace Spice.Areas.Admin.Controllers
         {
             if (coupons.Id == 0)
             {
-               return NotFound();
+                return NotFound();
             }
             var couponFromDb = await _db.Coupon.Where(c => c.Id == coupons.Id).FirstOrDefaultAsync();
 

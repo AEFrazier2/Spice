@@ -75,32 +75,4 @@
 @section Scripts{
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-    <script>
-        function updateCategoryList() {
-            var categorySelected = document.getElementById("ddlCategorylist").value;
-            $list = $('#CategoryList');
-            $.ajax({
-                url: '/Admin/Category/GetCategory/' + categorySelected,
-                type: 'GET',
-                dataType: 'text',
-                success: function (data) {
-                    results = JSON.parse(data);
-                    $list.html('');
-                    $list.append(' <ul class="list-group"> ');
-                    for (i in results) {
-                        $list.append('<li class="list-group-item">' + results[i].text + '</li>');
-                    }
-                    $list.append('</ul>');
-                }
-            });
-        }
-        $(document).ready(function () {
-            updateCategoryList();
-        });
-        $("#ddlCategorylist").on("change", function () {
-            updateCategoryList();
-        });
-    </script>
-
-
 }

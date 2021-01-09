@@ -16,7 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Spice.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Hosting;
-using Spice.Service;
+using Spice.Services;
 
 namespace Spice
 {
@@ -50,7 +50,7 @@ namespace Spice
 
             
             services.AddSingleton<IEmailSender, EmailSender>();
-            services.Configure<EmailOptions>(Configuration);
+            //services.Configure<EmailOptions>(Configuration);
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -89,7 +89,7 @@ namespace Spice
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
+                    name: "areas",
                     pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });

@@ -83,8 +83,7 @@ namespace Spice.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            _ = Request.Form["rdUserRole"].ToString();
-
+            string role = Request.Form["rdUserRole"].ToString();
 
             returnUrl ??= Url.Content("~/");
             if (ModelState.IsValid)
@@ -122,6 +121,32 @@ namespace Spice.Areas.Identity.Pages.Account
                     if (!await _roleManager.RoleExistsAsync(StaticDetail.KitchenUser))
                     {
                         await _roleManager.CreateAsync(new IdentityRole(StaticDetail.KitchenUser));
+                    }
+
+                    if(role==StaticDetail.KitchenUser)
+                    {
+                        await _userManager.AddToRoleAsync(user, StaticDetail.KitchenUser);
+                    }
+                    else
+                    {
+                        if (role == StaticDetail.FrontDeskUser)
+                        {
+                            await _userManager.AddToRoleAsync(user, StaticDetail.FrontDeskUser);
+                        }
+                        else
+                        {
+                            if (role == StaticDetail.ManagerUser)
+                            {
+                                await _userManager.AddToRoleAsync(user, StaticDetail.ManagerUser);
+                            }
+                            
+                                else
+                            {
+                                await _userManager.AddToRoleAsync(user, StaticDetail.CustomerEndUser);
+                                await _signInManager.SignInAsync(user, isPersistent: false);
+                                return LocalRedirect(returnUrl);
+                            }
+                        }
                     }
 
                     await _userManager.AddToRoleAsync(user, StaticDetail.ManagerUser);

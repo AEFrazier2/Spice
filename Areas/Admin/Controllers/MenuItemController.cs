@@ -50,6 +50,8 @@ namespace Spice.Areas.Admin.Controllers
             return View(MenuItemVM);
         }
 
+        //POST - CREATE
+
         [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePOST()
