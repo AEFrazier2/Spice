@@ -1,0 +1,21 @@
+﻿
+@model string
+@using Spice.Utility
+<div style="width:100%">
+    @if (Model == StaticDetail.StatusSubmitted)
+    {
+        <img src="~/images/OrderPlaced.png" style="width: 100%;" />
+    }
+    @if (Model == StaticDetail.StatusInProcess)
+    {
+        <img src="~/images/InKitchen.png" style="width: 100%;" />
+    }
+    @if (Model == StaticDetail.StatusReady)
+    {
+        <img src="~/images/ReadyForPickup.png" style="width: 100%;" />
+    }
+    @if (Model == StaticDetail.StatusCompleted)
+    {
+        <img src="~/images/completed.png" style="width: 100%;" />
+    }
+</div>

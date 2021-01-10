@@ -517,3 +517,13 @@ C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Customer\Views\Ho
 C:\Users\aefra\source\repos\Spice\bin\Debug\net5.0\SendGrid.dll
 C:\Users\aefra\source\repos\Spice\bin\Debug\net5.0\StarkbankEcdsa.dll
 C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Customer\Views\Cart\Index.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Customer\Views\Cart\Summary.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Views\Shared\_OrderStatus.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Customer\Views\Order\OrderHistory.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Customer\Views\Order\OrderPickup.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Customer\Views\Order\ManageOrder.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+C:\Users\aefra\source\repos\Spice\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\aefra\source\repos\Spice\obj\Debug\net5.0\Razor\Areas\Customer\Views\Order\Confirm.cshtml.g.cs
+C:\Users\aefra\source\repos\Spice\bin\Debug\net5.0\Stripe.net.dll

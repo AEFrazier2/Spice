@@ -17,6 +17,8 @@ using Spice.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Hosting;
 using Spice.Services;
+using Spice.Service;
+using Stripe;
 
 namespace Spice
 {
@@ -48,18 +50,45 @@ namespace Spice
                         .AddDefaultTokenProviders()
                         .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            
+
+            services.AddScoped<IDbInitializer, DbInitializer>();
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.AddSingleton<IEmailSender, EmailSender>();
-            //services.Configure<EmailOptions>(Configuration);
+            services.Configure<EmailOptions>(Configuration);
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            //services.AddAuthentication().AddFacebook(facebookOptions =>
+            //{
+            //    facebookOptions.AppId = "581243149004490";
+            //    facebookOptions.AppSecret = "a72e3bebaa552f73d3d52af4de3883d7";
+            //});
+
+            //services.AddAuthentication().AddGoogle(googleOptions =>
+            //{
+            //    googleOptions.ClientId = "943287545908-23cg1r49vf777q6lj9ndvl72cfro6vac.apps.googleusercontent.com";
+            //    googleOptions.ClientSecret = "9ppq7O-KTSbX4GNl8hWJscnG";
+            //});
 
             services.AddSession(options =>
             {
                 options.Cookie.IsEssential = true;
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
+            });
+
+            services.ConfigureApplicationCookie(options =>
+
+            {
+
+                options.LoginPath = $"/Identity/Account/Login";
+
+                options.LogoutPath = $"/Identity/Account/Logout";
+
+                options.AccessDeniedPath =
+                $"/Identity/Account/AccessDenied";
+
             });
         }
 
@@ -69,7 +98,8 @@ namespace Spice
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-               
+                //app.UseDatabaseErrorPage();
+
             }
             else
             {
@@ -78,8 +108,8 @@ namespace Spice
                 app.UseHsts();
             }
             app.UseRouting();
-            //StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
-           
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

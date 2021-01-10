@@ -48,6 +48,14 @@
               "target": "Package",
               "version": "[9.3.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.Facebook": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.MicrosoftAccount": {
               "target": "Package",
               "version": "[5.0.1, )"
@@ -103,6 +111,10 @@
             "SendGrid": {
               "target": "Package",
               "version": "[9.22.0, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[39.32.0, )"
             },
             "jQuery.UI.Combined": {
               "target": "Package",

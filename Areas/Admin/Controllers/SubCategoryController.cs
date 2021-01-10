@@ -14,8 +14,9 @@ using Spice.Utility;
 namespace Spice.Areas.Admin.AdminControllers
 
 {
-    [Authorize(Roles = StaticDetail.ManagerUser)]
+    
     [Area("Admin")]
+    [Authorize(Roles = StaticDetail.ManagerUser)]
     public class SubCategoryController : Controller
     {
         private readonly ApplicationDbContext _db;
