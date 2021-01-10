@@ -140,7 +140,7 @@ namespace Spice.Areas.Identity.Pages.Account
                                 await _userManager.AddToRoleAsync(user, StaticDetail.ManagerUser);
                             }
                             
-                                else
+                            else
                             {
                                 await _userManager.AddToRoleAsync(user, StaticDetail.CustomerEndUser);
                                 await _signInManager.SignInAsync(user, isPersistent: false);
@@ -151,28 +151,28 @@ namespace Spice.Areas.Identity.Pages.Account
 
                     return RedirectToAction("Index", "User", new { area = "Admin" });
 
-                    _logger.LogInformation("User created a new account with password.");
+                    //_logger.LogInformation("User created a new account with password.");
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { userId = user.Id, code },
-                        protocol: Request.Scheme);
+                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //var callbackUrl = Url.Page(
+                    //    "/Account/ConfirmEmail",
+                    //    pageHandler: null,
+                    //    values: new { userId = user.Id, code },
+                    //    protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
-                    }
-                    else
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                    //if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                    //{
+                    //    return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
+                    //}
+                    //else
+                    //{
+                    //    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //    return LocalRedirect(returnUrl);
 
-                    }
+                    //}
 
                 }
                 foreach (var error in result.Errors)

@@ -23,11 +23,11 @@ namespace Spice.Data
         }
 
 
-        public async void Initialize()
+        async void IDbInitializer.Initialize()
         {
             try
             {
-                if (_db.Database.GetPendingMigrations().Count() > 0)
+                if (_db.Database.GetPendingMigrations().Any())
                 {
                     _db.Database.Migrate();
                 }
@@ -58,6 +58,5 @@ namespace Spice.Data
             await _userManager.AddToRoleAsync(user, StaticDetail.ManagerUser);
 
         }
-
     }
 }
